@@ -1,6 +1,4 @@
 import Card from "./Card";
-import Image from "next/image";
-import logo from "@/assets/images/logo.png";
 import SidebarLink from "@/components/SideBarLink"
 
 const links = [
@@ -26,9 +24,9 @@ const links = [
 
 const Sidebar = () => {
   return (
-    <Card className="h-full w-40 flex items-center justify-between flex-wrap">
-      <div className="w-full flex justify-center items-center">
-        <Image src={logo} alt="Able logo" priority className="w-14" />
+    <Card className="h-full w-40 flex items-center justify-between flex-wrap mr-7">
+      <div className="w-full flex justify-center items-center border-solid border-b-4 border-gray-800">
+        <div className=" text-3xl justify-center items-center text-center"> <p> Habitrack </p> </div>
       </div>
       {links.map((link) => (
         // eslint-disable-next-line react/jsx-key
