@@ -17,6 +17,7 @@ const getData = async () => {
     },
     include: {
         habits: true
+
     }
   })
   return {clusters};
@@ -29,13 +30,14 @@ export default async function Page() {
       <div className=" h-full  items-stretch justify-center min-h-[content]">
         <div className="flex-1 grow flex">
             <Suspense fallback = {<GreetingSkeleton/>}>
-                <Greetings type="home"/>
+                <Greetings />
             </Suspense>
         </div>
         <div className="flex flex-2 grow items-center flex-wrap mt-3 -m-3 ">
           {clusters.map(cluster => ( 
             <div className = 'w-1/3 p-3' key={cluster.id}> 
               <Link href={`/cluster/${cluster.id}`}>
+                  
                   <ClusterCard cluster={cluster}/>
               </Link>
             </div>

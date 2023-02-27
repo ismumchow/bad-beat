@@ -10,15 +10,14 @@ const getData = async () => {
   return user;
 };
 
-const Greetings = async (type) => {
+const Greetings = async () => {
   const user = await getData();
 
   return (
-    <Card className="w-full py-4 relative">
-      { type ?
+    <Card className="w-full py-4 relative ">
         <div>
         <div className="mb-4">
-            <h1 className="text-3xl text-gray-700 font-bold mb-4">
+            <h1 className="text-3xl text-gray-700 font-bold mb-4 mt-3">
               Hello, {user?.firstName}!
             </h1>
             <h4 className="text-xl text-gray-400">
@@ -29,19 +28,6 @@ const Greetings = async (type) => {
               <Button size="large">Agenda Today</Button>
           </div>
         </div> 
-        : 
-        <div>
-        <div className="mb-4">
-            <h1 className="text-3xl text-gray-700 font-bold mb-4 pt-3">
-              {user?.firstName && user?.firstName} Lets Get to Those Habits!
-            </h1>
-            <h4 className="text-xl text-gray-400">
-              Checkout the habits you completed today!
-            </h4>
-          </div>
-        </div> 
-      }
-      
     </Card>
   );
 }

@@ -1,6 +1,5 @@
 import { hashPassword } from "@/lib/auth";
 import { db } from "@/lib/db";
-import cluster from "cluster";
 
 
 const habits = ['Meditating', 'Studying', 'Praying', 'Exercising', 'Cleaning','Reading']
@@ -21,6 +20,9 @@ async function main() {
           habits: {
             create:  new Array(Math.floor(Math.random() * habits.length)).fill(1).map((_, i) => ({
               name: habits[Math.floor(Math.random() * habits.length)],
+              habitsInstance: {
+                create: new Array(5).fill({status: false})
+              }
             })),
           },
         })),
@@ -32,7 +34,6 @@ async function main() {
     },
   });
 
-  console.log(user)
 
 }
 main()

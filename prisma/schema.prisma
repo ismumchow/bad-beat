@@ -11,10 +11,10 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  email     String   @unique
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  email     String    @unique
   firstName String
   lastName  String
   password  String
@@ -22,12 +22,13 @@ model User {
 }
 
 model Habit {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  name      String
-  deleted   Boolean?  @default(false)
-  groups    Cluster[]
+  id             Int             @id @default(autoincrement())
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  name           String
+  deleted        Boolean?        @default(false)
+  cluster        Cluster[]
+  habitsInstance habitInstance[]
 }
 
 model Cluster {
@@ -36,7 +37,17 @@ model Cluster {
   updatedAt DateTime @updatedAt
   habits    Habit[]
   name      String   @unique
-  User      User   @relation(fields: [userId], references: [id])
+  User      User     @relation(fields: [userId], references: [id])
   userId    Int
   deleted   Boolean  @default(false)
+}
+
+model habitInstance {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  habit     Habit @relation(fields: [habitId], references: [id])
+  habitId   Int
+  status    Boolean   @default(false)
 }

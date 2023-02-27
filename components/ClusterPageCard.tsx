@@ -7,8 +7,11 @@ import Card from "./Card";
 
 
 const ClusterPageCard = async ({ cluster }, className) => {
+  
   const habits = cluster.habits;
+  console.log(habits)
   return (
+  <div>
   <Card className ="mt-3 h-2/3 ">
       <div className="flex justify-between items-center w-full">
         <div className="pt-7 pl-4">
@@ -17,23 +20,24 @@ const ClusterPageCard = async ({ cluster }, className) => {
           </span>
         </div>
       </div>
-      <div className="pt-5 container">
+      <div className="pt-12 container">
         {habits && habits.length ? (
           <div className="grid text-center pl-2 content-center">
             {habits.map((habit) => (
               // eslint-disable-next-line react/jsx-key
                 <div className="text-center pt-3 pl-2 flex"> 
-                <div className="h-16 w-1/5 border-2 border-gray-400 rounded-2xl text-center pt-3">
-                    <span className="text-gray-700 text-2xl ">    
-                        {habit.name}
-                        </span> 
-                </div>
-                <div className="grid grid-cols-4 gap-4 w-full border-2 ml-2"> 
-                
-                </div>
+                  <div className="h-16 w-1/5 border-2 rounded-2xl text-center pt-3">
+                      <span className="text-gray-700 text-2xl ">    
+                          {habit.name}
+                      </span> 
+                  </div>
+                  <div className="grid w-full col-span-1 content-center"> 
+                    <div className="flex ml-4">
+                        <span> {habit.habitsInstance.map(instance => <span className="w-4 p-3 m-3 h-2 text-center content-center justify-start" key={instance.id}> <input type="checkbox" className="adefault:ring-2 w-12 h-12 rounded-2xl" /> </span> )} </span>
+                    </div>
+                  </div>
               </div>
             ))
-
             }
           </div>
         ) : (
@@ -42,6 +46,7 @@ const ClusterPageCard = async ({ cluster }, className) => {
         <Button intent ='secondary' className="h-16 w-1/5 ml-4 mt-5"> Add Habit </Button>
       </div>
     </Card>
+  </div>
   );
 }
 
