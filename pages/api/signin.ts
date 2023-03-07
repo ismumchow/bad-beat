@@ -12,7 +12,6 @@ export default async function signin(req: NextApiRequest, res: NextApiResponse) 
       }
     })
 
-    console.log(req.body.password, user?.password)
     const isUser = await comparePasswords(req.body.password, user?.password)
     
     if (isUser != false) {

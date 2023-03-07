@@ -21,7 +21,7 @@ async function main() {
             create:  new Array(Math.floor(Math.random() * habits.length)).fill(1).map((_, i) => ({
               name: habits[Math.floor(Math.random() * habits.length)],
               habitsInstance: {
-                create: new Array(5).fill({status: false})
+                create: new Array(10).fill({status: false})
               }
             })),
           },

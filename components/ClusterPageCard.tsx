@@ -1,10 +1,4 @@
-import { getUserFromCookie } from "@/lib/auth";
-import { db } from "@/lib/db";
-import { cookies } from "next/headers";
-import Button from "./Buttons";
 import Card from "./Card";
-
-
 
 const ClusterPageCard = async ({ cluster }, className) => {
   
@@ -14,24 +8,24 @@ const ClusterPageCard = async ({ cluster }, className) => {
   <div>
   <Card className ="mt-3 h-2/3 ">
       <div className="flex justify-between items-center w-full">
-        <div className="pt-7 pl-4">
-          <span className=" border-b-2  border-gray-400 text-5xl text-gray-700 p-2">{
+        <div className="pt-7">
+          <span className=" border-2 rounded-2xl  border-gray-400 text-5xl text-gray-700 p-4">{
           cluster.name}
           </span>
         </div>
       </div>
-      <div className="pt-12 container">
+      <div className="container pt-4">
         {habits && habits.length ? (
-          <div className="grid text-center pl-2 content-center">
+          <div className="grid text-center pl-2 content-center border-2 rounded-2xl mt-5">
             {habits.map((habit) => (
               // eslint-disable-next-line react/jsx-key
                 <div className="text-center pt-3 pl-2 flex"> 
-                  <div className="h-16 w-1/5 border-2 rounded-2xl text-center pt-3">
-                      <span className="text-gray-700 text-2xl ">    
+                  <div className="h-16 w-1/5 border-2 rounded-2xl text-center pt-3 mb-3">
+                      <span className="text-gray-700 text-2xl">    
                           {habit.name}
                       </span> 
                   </div>
-                  <div className="grid w-full col-span-1 content-center"> 
+                  <div className="grid w-full col-span-1 content-center overflow-y-auto"> 
                     <div className="flex ml-4">
                         <span> {habit.habitsInstance.map(instance => <span className="w-4 p-3 m-3 h-2 text-center content-center justify-start" key={instance.id}> <input type="checkbox" className="adefault:ring-2 w-12 h-12 rounded-2xl" /> </span> )} </span>
                     </div>
@@ -43,7 +37,6 @@ const ClusterPageCard = async ({ cluster }, className) => {
         ) : (
           <div> No Habits in this Cluster </div>
         )}
-        <Button intent ='secondary' className="h-16 w-1/5 ml-4 mt-5"> Add Habit </Button>
       </div>
     </Card>
   </div>

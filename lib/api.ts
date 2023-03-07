@@ -34,3 +34,24 @@ export const signin = async (user) => {
     })
 }
 
+export const createNewCluster = async (name) => {
+  return fetcher({
+    url: '/api/cluster',
+    method: 'POST',
+    body: {name},
+    json: true
+  })
+}
+
+export const createNewHabit = async (id, name) => {
+    id = id.id;
+  return fetcher({
+    url: `/api/cluster/${id}`,
+    method: 'POST',
+    body: {name},
+    json: true
+  })
+}
+
+
+

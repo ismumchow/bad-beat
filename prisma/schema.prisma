@@ -27,8 +27,9 @@ model Habit {
   updatedAt      DateTime        @updatedAt
   name           String
   deleted        Boolean?        @default(false)
-  cluster        Cluster[]
+  cluster        Cluster         @relation(fields: [clusterId], references: [id])
   habitsInstance habitInstance[]
+  clusterId      Int
 }
 
 model Cluster {
@@ -47,7 +48,7 @@ model habitInstance {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  habit     Habit @relation(fields: [habitId], references: [id])
-  habitId   Int
-  status    Boolean   @default(false)
+  habit   Habit   @relation(fields: [habitId], references: [id])
+  habitId Int
+  status  Boolean @default(false)
 }

@@ -1,6 +1,9 @@
+import Button from "@/components/Buttons";
+import Card from "@/components/Card";
 import ClusterCard from "@/components/ClusterCard";
 import Greetings from "@/components/Greetings";
 import GreetingSkeleton from "@/components/GreetingSkeleton";
+import NewCluster from "@/components/NewCluster";
 import { delay } from "@/lib/async";
 import { getUserFromCookie } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -33,16 +36,17 @@ export default async function Page() {
                 <Greetings />
             </Suspense>
         </div>
-        <div className="flex flex-2 grow items-center flex-wrap mt-3 -m-3 ">
+        <div className="flex grow items-center flex-wrap mt-3 -m-3 ">
           {clusters.map(cluster => ( 
             <div className = 'w-1/3 p-3' key={cluster.id}> 
               <Link href={`/cluster/${cluster.id}`}>
-                  
                   <ClusterCard cluster={cluster}/>
               </Link>
             </div>
           ))}
-          {/* <div className="w-1/3 p-3"> <NewProject /> </div> */}
+          <div className="w-1/3 flex justify-center text-center"> 
+            <NewCluster />
+           </div>
         </div>
       </div>
     </div>

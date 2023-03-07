@@ -1,5 +1,6 @@
 import ClusterPageCard from "@/components/ClusterPageCard"
 import Greetings from "@/components/Greetings"
+import NewHabit from "@/components/NewHabit"
 import { getUserFromCookie } from "@/lib/auth"
 import { db } from "@/lib/db"
 import { cookies } from "next/headers"
@@ -37,6 +38,7 @@ export default async function ProjectPage({ params }) {
     <div className="h-full overflow-y-auto pr-6 w-full justify-center">
       <Greetings type='cluster-page' className="m-3" />
       <ClusterPageCard cluster={cluster} /> 
+       <NewHabit id={params.id} />
     </div>
   )
 }
