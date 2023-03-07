@@ -6,7 +6,10 @@ export default async function handler(req, res) {
    await db.habit.create({
     data: {
       name: req.body.name,
-      clusterId: parseInt(req.query.id)
+      clusterId: parseInt(req.query.id),
+      habitsInstance: {
+        create: new Array(10).fill({status: false})
+      }
     },
   })
 
