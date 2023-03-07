@@ -54,6 +54,8 @@ export default function AuthForm({ mode }: { mode: "register" | "signin" }) {
   const content = mode === "register" ? registerContent : signinContent;
 
   return (
+    <div className="mt-16 pt-12"> 
+
     <Card>
       <div className="w-full">
         <div className="text-center">
@@ -137,5 +139,6 @@ export default function AuthForm({ mode }: { mode: "register" | "signin" }) {
         </form>
       </div>
     </Card>
+    </div>
   );
 }
